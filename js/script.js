@@ -6,19 +6,26 @@
 //  - se quedará fijo y centrado hasta que se cierre
 // End point: https://restcountries.com/v3/all
 
+const countriesList = document.getElementById('countries-list');
+//console.log(countriesList)
+
 const getFlags = async () => {
     try {
-        const response = await fetch('https://restcountries.com/v3/all')
+        const response = await fetch('https://restcountries.com/v3.1/all')
         if (!response.ok) {
             throw new Error ('Ha surgido un problema', response.status)
         }
         const data = await response.json()
-        console.log(data)
-
+        //console.log(data)
+        return data
     }
     catch (error) {
         console.log('Error al obtener los datos', error)
 
     }
 }
-getFlags()
+getFlags().then((data) => {
+    console.log(data)
+
+})
+
