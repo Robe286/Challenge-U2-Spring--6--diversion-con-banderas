@@ -43,12 +43,12 @@ const getFlags = async () => {
             `
         })
 
-        
+
 
         
     }
-    catch (error) {
-        console.log('Error al obtener los datos', error)
+    catch (err) {
+        console.error(err)
     }
 }
 getFlags()
@@ -70,18 +70,4 @@ const orderedCountries = (countries) => {
 /*
 const { name: {common}, flags } = country
 console.log({ common, flags })
-*/
-
-/*
-const allCountries = countries.map(country => {
-    const names = country.name.common
-    const flags = country.flags.png
-    countriesList.innerHTML = `
-    <div class="card">
-    <img src=${flags} alt=${names}/>
-    <p>${names}</p>
-    </div>
-    `
-})
-return allCountries
 */
