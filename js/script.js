@@ -6,6 +6,21 @@
 //  - se quedará fijo y centrado hasta que se cierre
 // End point: https://restcountries.com/v3/all
 
+// ---- NOTAS DE DATA ----
+
+// Una petición fetch a https://restcountries.com/v3/all
+// Aquí pondremos los paises id: countries-list
+// ordenar los elementos por orden alfabético sort()
+/* al clickar en el elemento sale un modal/capa flotante con estos datos:
+- país
+- la capital
+- la población y 
+- el lado de la carretera donde se circula
+*/ 
+// botón de cerrar el flotante
+
+//Async/await, fetch, usar sort, ... 
+
 const countriesList = document.getElementById('countries-list');
 //console.log(countriesList)
 
@@ -16,7 +31,7 @@ const getFlags = async () => {
             throw new Error ('Ha surgido un problema', response.status)
         }
         const data = await response.json()
-        //console.log(data)
+        console.log(data)
         return data
     }
     catch (error) {
@@ -24,8 +39,5 @@ const getFlags = async () => {
 
     }
 }
-getFlags().then((data) => {
-    console.log(data)
-
-})
+getFlags()
 
