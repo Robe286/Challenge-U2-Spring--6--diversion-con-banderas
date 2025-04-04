@@ -30,14 +30,58 @@ const getFlags = async () => {
         if (!response.ok) {
             throw new Error ('Ha surgido un problema', response.status)
         }
-        const data = await response.json()
-        console.log(data)
-        return data
+        const countries = await response.json()
+        orderedCountries(countries)
+        const pintado = countries.map(country => {
+            const names = country.name.common
+            const flags = country.flags.png
+            countriesList.innerHTML += `
+            <div class="card">
+            <img src=${flags} alt=${names}/>
+            <p>${names}</p>
+            </div>
+            `
+        })
+
+        
+
+        
     }
     catch (error) {
         console.log('Error al obtener los datos', error)
-
     }
 }
 getFlags()
 
+const orderedCountries = (countries) => {
+    countries.sort((a, b) => {
+        const nameA = a.name.common.toUpperCase()
+        const nameB = b.name.common.toUpperCase()
+        return nameA.localeCompare(nameB)
+    })
+}
+
+
+
+
+
+
+
+/*
+const { name: {common}, flags } = country
+console.log({ common, flags })
+*/
+
+/*
+const allCountries = countries.map(country => {
+    const names = country.name.common
+    const flags = country.flags.png
+    countriesList.innerHTML = `
+    <div class="card">
+    <img src=${flags} alt=${names}/>
+    <p>${names}</p>
+    </div>
+    `
+})
+return allCountries
+*/
